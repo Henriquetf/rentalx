@@ -8,6 +8,6 @@ export class ListCategoriesHandler {
   handler: RequestHandler = (request, response) => {
     const categories = this.listCategoriesUseCase.execute();
 
-    return response.status(201).json(categories);
+    return response.status(200).json(categories);
   };
 }
