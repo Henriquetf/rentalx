@@ -8,6 +8,8 @@ import swaggerFile from '../docs/swagger.json';
 
 import { makeDatabaseConnection } from './database';
 
+import './shared/container';
+
 import { router } from './routes';
 
 const app = express();
