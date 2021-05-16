@@ -3,9 +3,9 @@ import path from 'path';
 import { Router } from 'express';
 import multer from 'multer';
 
-import { createCategoryHandler } from '../modules/cars/useCases/createCategory';
-import { importCategoryHandler } from '../modules/cars/useCases/importCategory';
-import { listCategoriesHandler } from '../modules/cars/useCases/listCategories';
+import { makeCreateCategoryHandler } from '../modules/cars/useCases/createCategory';
+import { makeImportCategoryHandler } from '../modules/cars/useCases/importCategory';
+import { makeListCategoriesHandler } from '../modules/cars/useCases/listCategories';
 
 const upload = multer({
   dest: path.resolve(__dirname, '..', '..', 'storage', 'tmp'),
@@ -13,6 +13,8 @@ const upload = multer({
 
 export const categoriesRoutes = Router();
 
-categoriesRoutes.post('/', createCategoryHandler.handle);
-categoriesRoutes.get('/', listCategoriesHandler.handler);
-categoriesRoutes.post('/import', upload.single('file'), importCategoryHandler.handle);
+categoriesRoutes.post('/', (...args) => makeCreateCategoryHandler().handle(...args));
+categoriesRoutes.get('/', (...args) => makeListCategoriesHandler().handle(...args));
+categoriesRoutes.post('/import', upload.single('file'), (...args) =>
+  makeImportCategoryHandler().handle(...args),
+);

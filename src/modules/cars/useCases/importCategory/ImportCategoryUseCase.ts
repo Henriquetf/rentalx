@@ -43,12 +43,14 @@ export class ImportCategoryUseCase {
 
     await fs.promises.unlink(file.path);
 
-    categories.forEach((category) => {
-      const categoryExists = this.categoriesRepository.findByName(category.name);
+    const createCategoriesPromises = categories.map(async (category) => {
+      const categoryExists = await this.categoriesRepository.findByName(category.name);
 
       if (!categoryExists) {
-        this.categoriesRepository.create(category);
+        await this.categoriesRepository.create(category);
       }
     });
+
+    await Promise.all(createCategoriesPromises);
   }
 }

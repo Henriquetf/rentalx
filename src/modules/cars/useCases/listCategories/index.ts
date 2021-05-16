@@ -2,7 +2,9 @@ import { CategoriesRepository } from '../../repositories/implementations/Categor
 import { ListCategoriesHandler } from './ListCategoriesHandler';
 import { ListCategoriesUseCase } from './ListCategoriesUseCase';
 
-const categoriesRepository = CategoriesRepository.getInstance();
-const listCategoriesUseCase = new ListCategoriesUseCase(categoriesRepository);
+export function makeListCategoriesHandler(): ListCategoriesHandler {
+  const categoriesRepository = new CategoriesRepository();
+  const listCategoriesUseCase = new ListCategoriesUseCase(categoriesRepository);
 
-export const listCategoriesHandler = new ListCategoriesHandler(listCategoriesUseCase);
+  return new ListCategoriesHandler(listCategoriesUseCase);
+}
