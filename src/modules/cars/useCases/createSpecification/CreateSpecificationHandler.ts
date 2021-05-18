@@ -14,6 +14,6 @@ export class CreateSpecificationHandler {
       description,
     });
 
-    return response.status(201).send(specification);
+    return response.status(201).json(specification);
   };
 }
