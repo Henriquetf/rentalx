@@ -4,3 +4,8 @@ export interface ICreateUserDTO {
   password: string;
   driver_license: string;
 }
+
+export interface IUpdateUserDTO {
+  id: string;
+  avatar?: string;
+}

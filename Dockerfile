@@ -11,4 +11,6 @@ COPY . .
 EXPOSE 3333
 EXPOSE 9229
 
+USER node
+
 CMD ["yarn", "dev"]

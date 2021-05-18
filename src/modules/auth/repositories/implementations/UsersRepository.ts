@@ -1,6 +1,6 @@
 import { getRepository, Repository } from 'typeorm';
 
-import { ICreateUserDTO } from '../../dtos/ICreateUserDTO';
+import { ICreateUserDTO, IUpdateUserDTO } from '../../dtos/ICreateUserDTO';
 import { User } from '../../entities/User';
 import { IUsersRepository } from '../IUsersRepository';
 
@@ -29,5 +29,9 @@ export class UsersRepository implements IUsersRepository {
     await this.repository.save(user);
 
     return user;
+  }
+
+  update(params: IUpdateUserDTO): Promise<User> {
+    return this.repository.save(params);
   }
 }

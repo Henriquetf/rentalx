@@ -39,5 +39,9 @@ export const ensureAnthenticated: RequestHandler = async (request, response, nex
     throw new AppError('User does not exist', 401);
   }
 
+  request.user = {
+    id: user.id,
+  };
+
   next();
 };

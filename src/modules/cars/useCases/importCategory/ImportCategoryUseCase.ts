@@ -3,6 +3,7 @@ import fs from 'fs';
 import csvParse from 'csv-parse';
 import { inject, injectable } from 'tsyringe';
 
+import { deleteFile } from '../../../../utils/file';
 import { ICategoriesRepository } from '../../repositories/ICategoriesRepository';
 
 interface IImportCategory {
@@ -46,7 +47,7 @@ export class ImportCategoryUseCase {
   async execute(file: Express.Multer.File): Promise<void> {
     const categories = await this.loadCategories(file);
 
-    await fs.promises.unlink(file.path);
+    await deleteFile(file.path);
 
     const createCategoriesPromises = categories.map(async (category) => {
       const categoryExists = await this.categoriesRepository.findByName(category.name);
