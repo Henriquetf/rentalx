@@ -1,5 +1,8 @@
-import { ICreateCategoryDTO } from '../../dtos/ICreateCategoryDTO';
-import { Category } from '../../entities/Category';
+/* eslint-disable @typescript-eslint/require-await */
+
+import { ICreateCategoryDTO } from '@modules/cars/dtos/ICreateCategoryDTO';
+import { Category } from '@modules/cars/entities/Category';
+
 import { ICategoriesRepository } from '../ICategoriesRepository';
 
 export class CategoriesRepositoryInMemory implements ICategoriesRepository {

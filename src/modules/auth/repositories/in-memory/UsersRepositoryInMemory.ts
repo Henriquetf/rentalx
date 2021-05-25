@@ -1,5 +1,8 @@
-import { ICreateUserDTO, IUpdateUserDTO } from '../../dtos/ICreateUserDTO';
-import { User } from '../../entities/User';
+/* eslint-disable @typescript-eslint/require-await */
+
+import { ICreateUserDTO, IUpdateUserDTO } from '@modules/auth/dtos/ICreateUserDTO';
+import { User } from '@modules/auth/entities/User';
+
 import { IUsersRepository } from '../IUsersRepository';
 
 export class UsersRepositoryInMemory implements IUsersRepository {

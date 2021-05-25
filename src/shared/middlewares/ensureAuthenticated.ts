@@ -2,8 +2,8 @@ import { RequestHandler } from 'express';
 import { verify } from 'jsonwebtoken';
 import { container } from 'tsyringe';
 
-import { UsersRepository } from '../../modules/auth/repositories/implementations/UsersRepository';
-import { AppError } from '../errors/AppError';
+import { UsersRepository } from '@modules/auth/repositories/implementations/UsersRepository';
+import { AppError } from '@shared/errors/AppError';
 
 interface ITokenPayload {
   sub: string;

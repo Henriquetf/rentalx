@@ -1,9 +1,8 @@
 import { inject, injectable } from 'tsyringe';
 
-import { getStoragePath } from '../../../../config/upload';
-
-import { deleteFile } from '../../../../utils/file';
-import { IUsersRepository } from '../../repositories/IUsersRepository';
+import { getStoragePath } from '@config/upload';
+import { IUsersRepository } from '@modules/auth/repositories/IUsersRepository';
+import { deleteFile } from '@shared/utils/file';
 
 interface IRequest {
   user_id: string;

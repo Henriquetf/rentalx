@@ -1,7 +1,8 @@
 import { Router } from 'express';
 
-import { CreateSpecificationHandler } from '../modules/cars/useCases/createSpecification/CreateSpecificationHandler';
-import { ensureAnthenticated } from '../shared/middlewares/ensureAuthenticated';
+import { CreateSpecificationHandler } from '@modules/cars/useCases/createSpecification/CreateSpecificationHandler';
+
+import { ensureAnthenticated } from '@shared/middlewares/ensureAuthenticated';
 
 export const specificationRoutes = Router();
 

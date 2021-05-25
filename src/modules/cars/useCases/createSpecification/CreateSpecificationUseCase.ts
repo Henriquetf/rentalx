@@ -1,9 +1,8 @@
 import { inject, injectable } from 'tsyringe';
 
-import { AppError } from '../../../../shared/errors/AppError';
-
-import { Specification } from '../../entities/Specification';
-import { ISpecificationsRepository } from '../../repositories/ISpecificationsRepository';
+import { Specification } from '@modules/cars/entities/Specification';
+import { ISpecificationsRepository } from '@modules/cars/repositories/ISpecificationsRepository';
+import { AppError } from '@shared/errors/AppError';
 
 interface IRequest {
   name: string;
