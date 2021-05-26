@@ -2,7 +2,7 @@ import { RequestHandler } from 'express';
 import { verify } from 'jsonwebtoken';
 import { container } from 'tsyringe';
 
-import { UsersRepository } from '@modules/auth/repositories/implementations/UsersRepository';
+import { UsersRepository } from '@modules/accounts/infra/typeorm/repositories/UsersRepository';
 import { AppError } from '@shared/errors/AppError';
 
 interface ITokenPayload {

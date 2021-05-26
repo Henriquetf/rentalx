@@ -1,7 +1,7 @@
 import { inject, injectable } from 'tsyringe';
 
 import { getStoragePath } from '@config/upload';
-import { IUsersRepository } from '@modules/auth/repositories/IUsersRepository';
+import { IUsersRepository } from '@modules/accounts/repositories/IUsersRepository';
 import { deleteFile } from '@shared/utils/file';
 
 interface IRequest {

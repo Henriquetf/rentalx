@@ -2,7 +2,7 @@ import { Router } from 'express';
 
 import { CreateSpecificationHandler } from '@modules/cars/useCases/createSpecification/CreateSpecificationHandler';
 
-import { ensureAnthenticated } from '@shared/middlewares/ensureAuthenticated';
+import { ensureAnthenticated } from '@shared/infra/http/middlewares/ensureAuthenticated';
 
 export const specificationRoutes = Router();
 

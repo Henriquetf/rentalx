@@ -9,11 +9,10 @@ import swaggerUi from 'swagger-ui-express';
 import '@shared/container';
 
 import { AppError } from '@shared/errors/AppError';
+import { router } from '@shared/infra/http/routes';
+import { makeDatabaseConnection } from '@shared/infra/typeorm';
 
-import swaggerFile from '../docs/swagger.json';
-import { makeDatabaseConnection } from './database';
-
-import { router } from './routes';
+import swaggerFile from '../../../docs/swagger.json';
 
 const app = express();
 

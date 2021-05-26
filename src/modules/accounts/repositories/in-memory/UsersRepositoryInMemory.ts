@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/require-await */
 
-import { ICreateUserDTO, IUpdateUserDTO } from '@modules/auth/dtos/ICreateUserDTO';
-import { User } from '@modules/auth/entities/User';
+import { ICreateUserDTO, IUpdateUserDTO } from '@modules/accounts/dtos/ICreateUserDTO';
+import { User } from '@modules/accounts/infra/typeorm/entities/User';
 
 import { IUsersRepository } from '../IUsersRepository';
 

@@ -3,10 +3,10 @@ import multer from 'multer';
 
 import { makeUploadStorage } from '@config/upload';
 
-import { CreateUserHandler } from '@modules/auth/useCases/createUser/CreateUserHandler';
-import { UpdateUserAvatarHandler } from '@modules/auth/useCases/updateUserAvatar/UpdateUserAvatarHandler';
+import { CreateUserHandler } from '@modules/accounts/useCases/createUser/CreateUserHandler';
+import { UpdateUserAvatarHandler } from '@modules/accounts/useCases/updateUserAvatar/UpdateUserAvatarHandler';
 
-import { ensureAnthenticated } from '@shared/middlewares/ensureAuthenticated';
+import { ensureAnthenticated } from '@shared/infra/http/middlewares/ensureAuthenticated';
 
 export const usersRoutes = Router();
 

@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "ts-node-dev -r tsconfig-paths/register --inspect=0.0.0.0:9229 --respawn --no-notify src/server.ts",
+    "dev": "ts-node-dev -r tsconfig-paths/register --inspect=0.0.0.0:9229 --respawn --no-notify src/shared/infra/http/server.ts",
     "lint": "eslint src",
     "lint:fix": "eslint --fix src",
     "typeorm": "ts-node ./node_modules/typeorm/cli.js",
