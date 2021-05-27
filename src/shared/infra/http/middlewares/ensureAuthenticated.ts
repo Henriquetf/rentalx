@@ -28,7 +28,7 @@ export const ensureAnthenticated: RequestHandler = async (request, response, nex
 
     userId = decodedToken.sub;
   } catch {
-    throw new AppError('Invalid token', 401);
+    throw new AppError('Invalid authentication token', 401);
   }
 
   const usersRepository = container.resolve(UsersRepository);
@@ -41,6 +41,7 @@ export const ensureAnthenticated: RequestHandler = async (request, response, nex
 
   request.user = {
     id: user.id,
+    isAdmin: user.is_admin,
   };
 
   next();
