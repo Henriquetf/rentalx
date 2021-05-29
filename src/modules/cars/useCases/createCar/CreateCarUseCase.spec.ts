@@ -20,7 +20,7 @@ describe('Create Car', () => {
       license_plate: 'ABC8D90',
       daily_rate: 100,
       fine_amount: 60,
-      category_id: 'category_id',
+      category_id: '5d0c8e2c-4c2c-4d88-a3ea-77eec955fd71',
     });
 
     expect(car).toHaveProperty('id');
@@ -34,7 +34,7 @@ describe('Create Car', () => {
       license_plate: 'ABC8D90',
       daily_rate: 100,
       fine_amount: 60,
-      category_id: 'category_id',
+      category_id: '5d0c8e2c-4c2c-4d88-a3ea-77eec955fd71',
     });
 
     expect(car.available).toBe(true);
