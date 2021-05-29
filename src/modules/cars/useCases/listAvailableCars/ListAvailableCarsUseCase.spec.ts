@@ -1,9 +1,10 @@
+import { ICarsRepository } from '@modules/cars/repositories/ICarsRepository';
 import { CarsRepositoryInMemory } from '@modules/cars/repositories/in-memory/CarsRepositoryInMemory';
 
 import { ListAvailableCarsUseCase } from './ListAvailableCarsUseCase';
 
 describe('List Cars', () => {
-  let carsRepositoryInMemory: CarsRepositoryInMemory;
+  let carsRepositoryInMemory: ICarsRepository;
   let listAvailableCarsUseCase: ListAvailableCarsUseCase;
 
   beforeEach(() => {

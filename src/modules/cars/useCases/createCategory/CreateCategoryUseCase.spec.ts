@@ -1,10 +1,11 @@
+import { ICategoriesRepository } from '@modules/cars/repositories/ICategoriesRepository';
 import { CategoriesRepositoryInMemory } from '@modules/cars/repositories/in-memory/CategoriesRepositoryInMemory';
 import { AppError } from '@shared/errors/AppError';
 
 import { CreateCategoryUseCase } from './CreateCategoryUseCase';
 
 describe('Create Category', () => {
-  let categoriesRepository: CategoriesRepositoryInMemory;
+  let categoriesRepository: ICategoriesRepository;
   let createCategoryUseCase: CreateCategoryUseCase;
 
   beforeEach(() => {

@@ -1,4 +1,5 @@
 import { ICreateUserDTO } from '@modules/accounts/dtos/ICreateUserDTO';
+import { IUsersRepository } from '@modules/accounts/repositories/IUsersRepository';
 import { UsersRepositoryInMemory } from '@modules/accounts/repositories/in-memory/UsersRepositoryInMemory';
 import { CreateUserUseCase } from '@modules/accounts/useCases/createUser/CreateUserUseCase';
 import { AppError } from '@shared/errors/AppError';
@@ -6,7 +7,7 @@ import { AppError } from '@shared/errors/AppError';
 import { AuthenticateUserUseCase } from './AuthenticateUserUseCase';
 
 describe('Authenticate User', () => {
-  let usersRepository: UsersRepositoryInMemory;
+  let usersRepository: IUsersRepository;
   let authenticateUserUseCase: AuthenticateUserUseCase;
   let createUserUseCase: CreateUserUseCase;
 

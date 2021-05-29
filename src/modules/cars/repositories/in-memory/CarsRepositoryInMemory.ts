@@ -8,6 +8,10 @@ import { ICarsRepository } from '../ICarsRepository';
 export class CarsRepositoryInMemory implements ICarsRepository {
   private cars: Car[] = [];
 
+  async findById(car_id: string): Promise<Car | undefined> {
+    return this.cars.find((car) => car.id === car_id);
+  }
+
   async findByLicensePlate(license_plate: string): Promise<Car | undefined> {
     return this.cars.find((car) => car.license_plate === license_plate);
   }
@@ -32,6 +36,18 @@ export class CarsRepositoryInMemory implements ICarsRepository {
     });
 
     this.cars.push(car);
+
+    return car;
+  }
+
+  async update(car: Car): Promise<Car> {
+    const carIndex = this.cars.findIndex((c) => c.id === car.id);
+
+    if (carIndex > -1) {
+      this.cars[carIndex] = car;
+    } else {
+      this.cars.push(car);
+    }
 
     return car;
   }
