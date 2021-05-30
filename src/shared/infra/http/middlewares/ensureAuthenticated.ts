@@ -9,7 +9,7 @@ interface ITokenPayload {
   sub: string;
 }
 
-export const ensureAnthenticated: RequestHandler = async (request, response, next) => {
+export const ensureAuthenticated: RequestHandler = async (request, response, next) => {
   const { authorization } = request.headers;
 
   if (!authorization) {
