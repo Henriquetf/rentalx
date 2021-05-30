@@ -6,6 +6,7 @@ export async function makeDatabaseConnection(host = 'database'): Promise<Connect
   return createConnection(
     Object.assign(defaultOptions, {
       host,
+      database: process.env.NODE_ENV === 'test' ? 'rentalx_test' : defaultOptions.database,
     }),
   );
 }

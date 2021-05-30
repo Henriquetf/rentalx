@@ -1,11 +1,10 @@
 import { hash } from 'bcrypt';
 
+import { Connection } from 'typeorm';
+
 import { User } from '@modules/accounts/infra/typeorm/entities/User';
 
-import { makeDatabaseConnection } from '..';
-
-async function create() {
-  const connection = await makeDatabaseConnection();
+export async function seedUsers(connection: Connection): Promise<void> {
   const usersRepository = connection.getRepository(User);
 
   const password = await hash('admin', 8);
@@ -26,10 +25,4 @@ async function create() {
     driver_license: '000222XXX',
     password: passwordUser,
   });
-
-  await connection.close();
 }
-
-create()
-  .then(() => console.log('Users created'))
-  .catch(console.log);
