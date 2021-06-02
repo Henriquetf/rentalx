@@ -40,13 +40,18 @@ describe('List Categories', () => {
     await request(app)
       .post('/categories')
       .set({
-        Authorization: `Bearer ${token}`,
+        authorization: `Bearer ${token}`,
       })
       .send(newCategory);
 
-    const response = await request(app).get('/categories').send();
+    const response = await request(app)
+      .get('/categories')
+      .set({
+        authorization: `Bearer ${token}`,
+      })
+      .send();
 
-    expect(response.status).toBe(200);
     expect(response.body).toMatchObject([newCategory]);
+    expect(response.status).toBe(200);
   });
 });

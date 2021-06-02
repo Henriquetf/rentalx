@@ -27,9 +27,19 @@ describe('Create Rental', () => {
   });
 
   it('should be able to create a rental', async () => {
+    const car = await carsRepository.create({
+      name: 'CarNivore',
+      brand: 'Dio Brando',
+      description: 'Detailed car description',
+      license_plate: 'ABC8D90',
+      daily_rate: 100,
+      fine_amount: 60,
+      category_id: '5d0c8e2c-4c2c-4d88-a3ea-77eec955fd71',
+    });
+
     const rental = await createRentalUseCase.execute({
       user_id: '123456',
-      car_id: '123456',
+      car_id: car.id,
       expected_return_date: date24hoursFromNow,
     });
 
@@ -38,15 +48,18 @@ describe('Create Rental', () => {
   });
 
   it('should not be a able to create a new rental if there is another open rental to the same user', async () => {
+    const user_id = '123456';
+    const car_id = '123456';
+
     await createRentalUseCase.execute({
-      user_id: '123456',
-      car_id: '123456',
+      user_id,
+      car_id,
       expected_return_date: date24hoursFromNow,
     });
 
     await expect(
       createRentalUseCase.execute({
-        user_id: '123456',
+        user_id,
         car_id: '7890',
         expected_return_date: date24hoursFromNow,
       }),

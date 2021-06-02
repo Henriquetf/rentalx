@@ -10,7 +10,7 @@
     "typeorm": "ts-node ./node_modules/typeorm/cli.js",
     "seed": "ts-node src/shared/infra/typeorm/seed/users.ts",
     "compose": "docker-compose exec app yarn",
-    "test": "NODE_ENV=test jest"
+    "test": "NODE_ENV=test jest --runInBand --detectOpenHandles"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
