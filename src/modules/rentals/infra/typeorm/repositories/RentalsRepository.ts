@@ -20,6 +20,12 @@ export class RentalsRepository implements IRentalsRepository {
     return rental;
   }
 
+  async update(rental: Rental): Promise<Rental> {
+    const updatedRental = await this.repository.save(rental);
+
+    return updatedRental;
+  }
+
   async findOpenRentalByCar(car_id: string): Promise<Rental | undefined> {
     const rental = this.repository.findOne({
       where: {
@@ -38,6 +44,12 @@ export class RentalsRepository implements IRentalsRepository {
         end_date: null,
       },
     });
+
+    return rental;
+  }
+
+  async findById(id: string): Promise<Rental | undefined> {
+    const rental = await this.repository.findOne(id);
 
     return rental;
   }

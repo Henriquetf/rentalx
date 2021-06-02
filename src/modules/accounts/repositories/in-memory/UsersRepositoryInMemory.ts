@@ -21,7 +21,20 @@ export class UsersRepositoryInMemory implements IUsersRepository {
   }
 
   async update(params: IUpdateUserDTO): Promise<User> {
-    throw new Error('Method not implemented.');
+    const userIndex = this.users.findIndex((u) => u.id === params.id);
+
+    if (userIndex === -1) {
+      throw new Error('User not found');
+    }
+
+    const user = {
+      ...this.users[userIndex],
+      ...params,
+    };
+
+    this.users[userIndex] = user;
+
+    return user;
   }
 
   async findById(id: string): Promise<User | undefined> {

@@ -28,4 +28,20 @@ export class RentalsRepositoryInMemory implements IRentalsRepository {
 
     return rental;
   }
+
+  async update(rental: Rental): Promise<Rental> {
+    const rentalIndex = this.rentals.findIndex((r) => r.id === rental.id);
+
+    if (rentalIndex > -1) {
+      this.rentals[rentalIndex] = rental;
+    } else {
+      this.rentals.push(rental);
+    }
+
+    return rental;
+  }
+
+  async findById(id: string): Promise<Rental | undefined> {
+    return this.rentals.find((r) => r.id === id);
+  }
 }
