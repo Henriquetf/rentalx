@@ -9,10 +9,8 @@ export class RefreshTokenHandler {
 
     const refreshTokenUseCase = container.resolve(RefreshTokenUseCase);
 
-    const refresh_token = await refreshTokenUseCase.execute(token);
+    const newToken = await refreshTokenUseCase.execute(token);
 
-    return response.json({
-      refresh_token,
-    });
+    return response.json(newToken);
   };
 }
