@@ -26,7 +26,7 @@ describe('List Categories', () => {
       password: 'admin',
     });
 
-    return response.body.token;
+    return response.body.refresh_token;
   }
 
   it('should be able to list all categories', async () => {

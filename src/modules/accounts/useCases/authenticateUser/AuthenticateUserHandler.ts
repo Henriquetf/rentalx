@@ -9,7 +9,7 @@ export class AuthenticateUserHandler {
 
     const authenticateUserUseCase = container.resolve(AuthenticateUserUseCase);
 
-    const { user, token } = await authenticateUserUseCase.execute({
+    const { user, token, refresh_token } = await authenticateUserUseCase.execute({
       email,
       password,
     });
@@ -17,6 +17,7 @@ export class AuthenticateUserHandler {
     return response.json({
       user,
       token,
+      refresh_token,
     });
   };
 }

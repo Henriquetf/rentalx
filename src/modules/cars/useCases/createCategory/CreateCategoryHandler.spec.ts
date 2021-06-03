@@ -26,7 +26,7 @@ describe('Create Category Handler', () => {
       password: 'admin',
     });
 
-    return response.body.token;
+    return response.body.refresh_token;
   }
 
   it('should be able to create a new category', async () => {

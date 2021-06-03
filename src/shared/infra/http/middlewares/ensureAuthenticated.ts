@@ -2,7 +2,9 @@ import { RequestHandler } from 'express';
 import { verify } from 'jsonwebtoken';
 import { container } from 'tsyringe';
 
+import { authConfig } from '@config/auth';
 import { UsersRepository } from '@modules/accounts/infra/typeorm/repositories/UsersRepository';
+import { UsersTokensRepository } from '@modules/accounts/infra/typeorm/repositories/UsersTokensRepository';
 import { AppError } from '@shared/errors/AppError';
 
 interface ITokenPayload {
@@ -21,19 +23,16 @@ export const ensureAuthenticated: RequestHandler = async (request, response, nex
   let userId: string;
 
   try {
-    const decodedToken = verify(
-      token,
-      't8lLDIAkCBxBNy2tPgNybIkE/V1omdPkab0csXTI2efqFTXdeIh70WFPfDuKK7RmC1ZP7j0jRJHbT4ex7FTeOotjYzwA0xQT60Np0jT5OvqV4g0yL/GCCBTJsOPVuTC7Cm6DKjE+APT05oskb1PLAXgvI92NWT3S9dZP51v87fQD/s4JHRzbsq/uqgm6tWH7BrMuxVSlLDLH8SI0rlp3ef89/zyAT2IUSiDw0Q==%',
-    ) as ITokenPayload;
+    const decodedToken = verify(token, authConfig.refresh_token.secret) as ITokenPayload;
 
     userId = decodedToken.sub;
   } catch {
     throw new AppError('Invalid authentication token', 401);
   }
 
-  const usersRepository = container.resolve(UsersRepository);
+  const usersTokensRepository = container.resolve(UsersTokensRepository);
 
-  const user = await usersRepository.findById(userId);
+  const user = await usersTokensRepository.findTokenByUser(token, userId);
 
   if (!user) {
     throw new AppError('User does not exist', 401);

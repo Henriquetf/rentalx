@@ -1,8 +1,8 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
-const tableName = 'rentals';
+const tableName = 'users_tokens';
 
-export class CreateRentals1622380875120 implements MigrationInterface {
+export class CreateUsersTokens1622675450606 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
@@ -17,59 +17,31 @@ export class CreateRentals1622380875120 implements MigrationInterface {
             default: 'uuid_generate_v4()',
           },
           {
-            name: 'car_id',
-            type: 'uuid',
+            name: 'refresh_token',
+            type: 'varchar',
           },
           {
             name: 'user_id',
             type: 'uuid',
           },
           {
-            name: 'start_date',
+            name: 'expiration_date',
             type: 'timestamp',
-            default: 'now()',
-          },
-          {
-            name: 'end_date',
-            type: 'timestamp',
-            isNullable: true,
-          },
-          {
-            name: 'expected_return_date',
-            type: 'timestamp',
-          },
-          {
-            name: 'total',
-            type: 'numeric',
-            isNullable: true,
           },
           {
             name: 'created_at',
-            type: 'date',
-            default: 'now()',
-          },
-          {
-            name: 'updated_at',
-            type: 'date',
+            type: 'timestamp',
             default: 'now()',
           },
         ],
         foreignKeys: [
           {
-            name: 'FK_rentals_car_id',
-            columnNames: ['car_id'],
-            referencedTableName: 'cars',
-            referencedColumnNames: ['id'],
-            onUpdate: 'SET NULL',
-            onDelete: 'SET NULL',
-          },
-          {
-            name: 'FK_rentals_user_id',
+            name: 'FK_users_tokens_user_id',
             columnNames: ['user_id'],
             referencedTableName: 'users',
             referencedColumnNames: ['id'],
-            onUpdate: 'SET NULL',
             onDelete: 'SET NULL',
+            onUpdate: 'SET NULL',
           },
         ],
       }),
