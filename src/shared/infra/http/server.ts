@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { makeDatabaseConnection } from '@shared/infra/typeorm';
 
 import { app } from './app';

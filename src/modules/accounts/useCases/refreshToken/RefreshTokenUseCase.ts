@@ -26,7 +26,7 @@ export class RefreshTokenUseCase {
 
     const { sub: user_id, email } = payload;
 
-    const userToken = await this.usersTokensRepository.findTokenByUser(token, user_id);
+    const userToken = await this.usersTokensRepository.findByRefreshTokenAndUser(token, user_id);
 
     if (!userToken) {
       throw new AppError('Refresh token does not exist.');

@@ -30,9 +30,16 @@ export const ensureAuthenticated: RequestHandler = async (request, response, nex
     throw new AppError('Invalid authentication token', 401);
   }
 
+  const usersRepository = container.resolve(UsersRepository);
   const usersTokensRepository = container.resolve(UsersTokensRepository);
 
-  const user = await usersTokensRepository.findTokenByUser(token, userId);
+  const userToken = await usersTokensRepository.findByRefreshTokenAndUser(token, userId);
+
+  if (!userToken) {
+    throw new AppError('Invalid authentication token', 401);
+  }
+
+  const user = await usersRepository.findById(userId);
 
   if (!user) {
     throw new AppError('User does not exist', 401);

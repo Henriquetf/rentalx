@@ -24,11 +24,19 @@ export class DayjsDateProvider implements IDateProvider {
     return dayjs(end_date_utc).diff(start_date_utc, 'days');
   }
 
+  compareIsBefore(start_date: Date, end_date: Date): boolean {
+    return dayjs(start_date).isBefore(end_date);
+  }
+
   dateNow(): Date {
     return dayjs().toDate();
   }
 
   addDays(days: number): Date {
     return dayjs().add(days, 'days').toDate();
+  }
+
+  addHours(hours: number): Date {
+    return dayjs().add(hours, 'hours').toDate();
   }
 }

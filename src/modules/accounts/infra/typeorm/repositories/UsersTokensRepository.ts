@@ -20,7 +20,10 @@ export class UsersTokensRepository implements IUsersTokensRepository {
     return userToken;
   }
 
-  async findTokenByUser(refresh_token: string, user_id: string): Promise<UserToken | undefined> {
+  async findByRefreshTokenAndUser(
+    refresh_token: string,
+    user_id: string,
+  ): Promise<UserToken | undefined> {
     const usersTokens = await this.repository.findOne({
       where: {
         user_id,
@@ -29,6 +32,16 @@ export class UsersTokensRepository implements IUsersTokensRepository {
     });
 
     return usersTokens;
+  }
+
+  async findByRefreshToken(refresh_token: string): Promise<UserToken | undefined> {
+    const userToken = await this.repository.findOne({
+      where: {
+        refresh_token,
+      },
+    });
+
+    return userToken;
   }
 
   async deleteById(id: string): Promise<void> {
