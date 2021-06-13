@@ -10,6 +10,7 @@ import swaggerUi from 'swagger-ui-express';
 
 import '@shared/container';
 
+import { getStoragePath } from '@config/upload';
 import { AppError } from '@shared/errors/AppError';
 import { router } from '@shared/infra/http/routes';
 
@@ -20,6 +21,9 @@ const app = express();
 app.disable('x-powered-by');
 
 app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
+
+app.use('/avatars', express.static(getStoragePath('avatars')));
+app.use('/cars', express.static(getStoragePath('cars')));
 
 app.use(express.json());
 app.use(router);
