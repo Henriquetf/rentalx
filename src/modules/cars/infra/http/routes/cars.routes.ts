@@ -12,7 +12,7 @@ import { ensureAuthenticated } from '@shared/infra/http/middlewares/ensureAuthen
 
 export const carsRoutes = Router();
 
-const uploadCarImages = multer(makeUploadStorage('./cars'));
+const uploadCarImages = multer(makeUploadStorage('cars'));
 
 const createCarHandler = new CreateCarHandler();
 const listAvailableCarsHandler = new ListAvailableCarsHandler();

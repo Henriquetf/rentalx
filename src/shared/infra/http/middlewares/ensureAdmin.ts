@@ -16,7 +16,7 @@ export const ensureAdmin: RequestHandler = async (request, _, next) => {
     throw new AppError('User does not exist', 401);
   }
 
-  if (!isAdmin) {
+  if (!user.is_admin) {
     throw new AppError('User is not an admin.');
   }
 

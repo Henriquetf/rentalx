@@ -11,7 +11,7 @@ import { ensureAuthenticated } from '@shared/infra/http/middlewares/ensureAuthen
 
 export const categoriesRoutes = Router();
 
-const uploadCategory = multer(makeUploadStorage('./tmp/category'));
+const uploadCategory = multer(makeUploadStorage('category'));
 
 const listCategoriesHandler = new ListCategoriesHandler();
 const createCategoryHandler = new CreateCategoryHandler();
