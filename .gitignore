@@ -3,6 +3,8 @@ node_modules/
 storage/*
 !storage/.gitkeep
 
-.env
-
 coverage/
+dist/
+
+.env
+ormconfig.json
