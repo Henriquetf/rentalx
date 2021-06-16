@@ -16,8 +16,11 @@ import { AppError } from '@shared/errors/AppError';
 import { router } from '@shared/infra/http/routes';
 
 import swaggerFile from '../../../docs/swagger.json';
+import { rateLimiter } from './middlewares/rateLimiter';
 
 const app = express();
+
+app.use(rateLimiter);
 
 app.disable('x-powered-by');
 
