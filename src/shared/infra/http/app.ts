@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 import 'reflect-metadata';
 
+import cors from 'cors';
 import express, { NextFunction, Request, Response } from 'express';
 import 'express-async-errors';
 
@@ -19,6 +20,8 @@ import swaggerFile from '../../../docs/swagger.json';
 const app = express();
 
 app.disable('x-powered-by');
+
+app.use(cors());
 
 app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
