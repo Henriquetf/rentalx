@@ -34,3 +34,16 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           source: ".,!node_modules"
           target: ${{ secrets.SSH_TARGET_PATH }}
+
+      - name: Update dependencies
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            cd ${{ secrets.SSH_TARGET_PATH }}
+            yarn
+            ./node_modules/.bin/typeorm migration:run
+            pm2 restart all
